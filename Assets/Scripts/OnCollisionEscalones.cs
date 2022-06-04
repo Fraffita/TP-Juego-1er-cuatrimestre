@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class OnCollisionEscalones : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject Escalon;
+    public Material Verde;
+    public Material Rojo;
+   
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
@@ -18,17 +21,23 @@ public class OnCollisionEscalones : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //MeshRenderer renderer = GetComponent<MeshRenderer>();
-        //renderer.material = new Material(Shader.Find("Verde"));
-        if (collision.gameObject.tag == "Untagged") {
-            gameObject.SetActive(false); 
+        if (collision.gameObject.tag == "Player") {
+            Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+            StartCoroutine("cambiocolor");
+
         }
 
         else
         {
-            Debug.Log("No pasa nada");
+            
         }
-        //renderer.material = new Material(Shader.Find("Rojo"));
+    }
+
+    IEnumerator cambiocolor()
+    {
+        yield return new WaitForSeconds(3f);
+        Escalon.gameObject.GetComponent<Renderer>().material = Rojo;
+        Escalon.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
 }
