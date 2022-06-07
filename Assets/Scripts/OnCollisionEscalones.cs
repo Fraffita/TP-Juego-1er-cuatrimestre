@@ -7,6 +7,9 @@ public class OnCollisionEscalones : MonoBehaviour
     public GameObject Escalon;
     public Material Verde;
     public Material Rojo;
+
+    private float posX;
+    private float posY;
    
     void Start()
     {
@@ -25,12 +28,10 @@ public class OnCollisionEscalones : MonoBehaviour
             Escalon.gameObject.GetComponent<Renderer>().material = Verde;
             StartCoroutine("cambiocolor");
 
+            Instantiate(Escalon, new Vector3(-20, 2, 5), Quaternion.identity);
+
         }
 
-        else
-        {
-            
-        }
     }
 
     IEnumerator cambiocolor()

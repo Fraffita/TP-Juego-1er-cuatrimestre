@@ -6,6 +6,7 @@ public class CreadorEscalones : MonoBehaviour
 {
     public GameObject Escalones;
     public float RangoCreacion = 14f;
+
     void Start()
     {
         Invoke("Creando", 0);
@@ -20,4 +21,5 @@ public class CreadorEscalones : MonoBehaviour
 
         GameObject Escalon = Instantiate(Escalones, SpawnPosition, Quaternion.identity);
     }
+
 }
