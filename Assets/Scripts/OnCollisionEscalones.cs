@@ -7,13 +7,12 @@ public class OnCollisionEscalones : MonoBehaviour
     public GameObject Escalon;
     public Material Verde;
     public Material Rojo;
+    public bool tocado;
+    float posZ;
 
-    private float posX;
-    private float posY;
-   
     void Start()
     {
-        
+       posZ = Random.Range(-6.5f, 5.5f);
     }
 
    
@@ -24,11 +23,16 @@ public class OnCollisionEscalones : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == "Player" && tocado == false) {
+
+            Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
             Escalon.gameObject.GetComponent<Renderer>().material = Verde;
             StartCoroutine("cambiocolor");
+           // float posZ = Random.Range(-6.5f, 5.5f);
 
-            Instantiate(Escalon, new Vector3(-20, 2, 5), Quaternion.identity);
+            
+
+            tocado = true;
 
         }
 
@@ -38,7 +42,7 @@ public class OnCollisionEscalones : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Escalon.gameObject.GetComponent<Renderer>().material = Rojo;
-        Escalon.gameObject.GetComponent<BoxCollider>().enabled = false;
+        Destroy(Escalon, 2);
     }
 
 }

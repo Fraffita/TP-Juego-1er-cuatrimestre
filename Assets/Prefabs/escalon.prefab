@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4630498564552974101}
   m_Layer: 0
   m_Name: escalon
-  m_TagString: Untagged
+  m_TagString: escalon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,3 +107,4 @@ MonoBehaviour:
   Escalon: {fileID: 4630498564552974094}
   Verde: {fileID: 2100000, guid: 9e48a928e2105ef489e922aa82714ee0, type: 2}
   Rojo: {fileID: 2100000, guid: d77ca0d5f0b3d0446bd0f261ec9be047, type: 2}
+  tocado: 0
