@@ -5,7 +5,6 @@ using UnityEngine;
 public class CreadorEscalones : MonoBehaviour
 {
     public GameObject Escalones;
-    public float RangoCreacion = 14f;
     float posZ;
 
     public void Creando()

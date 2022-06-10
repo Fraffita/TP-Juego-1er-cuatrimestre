@@ -8,11 +8,11 @@ public class OnCollisionEscalones : MonoBehaviour
     public Material Verde;
     public Material Rojo;
     GameObject GameManager;
-    public GameObject spawnN2;
-    public GameObject spawnN3;
+   //public GameObject spawnN2;
+   //public GameObject spawnN3;
 
     GameObject player;
-    
+
 
     GameObject ultPlataforma1;
     GameObject ultPlataforma2;
@@ -21,7 +21,7 @@ public class OnCollisionEscalones : MonoBehaviour
     float posZ;
     float posX;
     float posZ2;
-    keepTrack keepTrack; 
+    keepTrack keepTrack;
 
 
     void Start()
@@ -33,29 +33,9 @@ public class OnCollisionEscalones : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-   
+
     void Update()
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-       
-
-        if (collision.gameObject.tag == "Player" && tocado == false) {
-
-            Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
-            Escalon.gameObject.GetComponent<Renderer>().material = Verde;
-            StartCoroutine("cambiocolor");
-            tocado = true;
-
-        }
-
-        keepTrack.Score++;
-        Debug.Log(keepTrack.Score);
-        Debug.Log("AwA");
-        Debug.Log(tocado);
 
     }
 
@@ -66,6 +46,28 @@ public class OnCollisionEscalones : MonoBehaviour
         Destroy(Escalon, 1);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+        if (collision.gameObject.tag == "Player" && tocado == false)
+        {
+
+            //       // Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
+            Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+            StartCoroutine("cambiocolor");
+            tocado = true;
+
+        }
+
+        //    keepTrack.Score++;
+        //    Debug.Log(keepTrack.Score);
+        //    Debug.Log("AwA");
+        //    Debug.Log(tocado);
+
+        //} 
+
+    }
 }
 
 /* if (score < 7)
