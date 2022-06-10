@@ -12,6 +12,4 @@ public class keepTrack : MonoBehaviour
         Score = 0;
     }
 
-   
-
 }

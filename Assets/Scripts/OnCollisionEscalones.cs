@@ -19,12 +19,14 @@ public class OnCollisionEscalones : MonoBehaviour
     float posZ;
     float posX;
     float posZ2;
+    public int score;
 
     void Start()
     {
        posZ = Random.Range(-6.5f, 5.5f);
         posX = Random.Range(-81.5f, -69.5f);
         GameManager = GameObject.FindGameObjectWithTag("GameController");
+        score = 0;
     }
 
    
@@ -37,48 +39,54 @@ public class OnCollisionEscalones : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && tocado == false) {
 
-                int score = GameManager.GetComponent<keepTrack>().Score;
-               
+            //  int score = GameManager.GetComponent<keepTrack>().Score;
 
+            Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
+            Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+            StartCoroutine("cambiocolor");
+            tocado = true;
 
-            if (score < 7)
-            {
-                score++;
-                Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
-                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
-                StartCoroutine("cambiocolor");
-                tocado = true;
-                
-            }
+            score++;
 
-            if(score == 7)
-            {
-                ultPlataforma1 = Instantiate(gameObject, new Vector3(posX, 0.4f, 18), Quaternion.identity);
-            }
-            else if (score > 7)
-            {
+            /* if (score < 7)
+             {
 
-                Instantiate(gameObject, new Vector3(posX, transform.position.y, ultPlataforma1.transform.position.z +8  ), Quaternion.identity);
-                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
-                StartCoroutine("cambiocolor");
-                tocado = true;
+                 Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
+                 Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                 StartCoroutine("cambiocolor");
+                 tocado = true;
 
-            }
+             }
 
-            if (score == 14)
-            {
-                ultPlataforma2 = Instantiate(gameObject, new Vector3(posX, 0.4f, 18), Quaternion.identity);
-            }
+             if(score == 7)
+             {
+                 ultPlataforma1 = Instantiate(gameObject, new Vector3(posX, 0.4f, 18), Quaternion.identity);
+             }
+             else if (score > 7)
+             {
 
-            else if (score >= 14)
-            {
+                 Instantiate(gameObject, new Vector3(posX, transform.position.y, ultPlataforma1.transform.position.z +8  ), Quaternion.identity);
+                 Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                 StartCoroutine("cambiocolor");
+                 tocado = true;
 
-                Instantiate(gameObject, new Vector3(ultPlataforma2.transform.position.x - 10, transform.position.y, posZ), Quaternion.identity);
-                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
-                StartCoroutine("cambiocolor");
-                tocado = true;
+             }
 
-            }
+             if (score == 14)
+             {
+                 ultPlataforma2 = Instantiate(gameObject, new Vector3(posX, 0.4f, 18), Quaternion.identity);
+             }
+
+             else if (score >= 14)
+             {
+
+                 Instantiate(gameObject, new Vector3(ultPlataforma2.transform.position.x - 10, transform.position.y, posZ), Quaternion.identity);
+                 Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                 StartCoroutine("cambiocolor");
+                 tocado = true;
+
+             } */
+
 
         }
 
