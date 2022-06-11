@@ -12,15 +12,18 @@ public class OnCollisionEscalones : MonoBehaviour
    //public GameObject spawnN3;
 
     GameObject player;
+    GameObject baseN2;
 
 
-    GameObject ultPlataforma1;
-    GameObject ultPlataforma2;
+    // GameObject ultPlataforma1;
+  //  GameObject ultPlataforma2;
 
     bool tocado;
     float posZ;
     float posX;
     float posZ2;
+    public int score;
+
     keepTrack keepTrack;
 
 
@@ -31,12 +34,8 @@ public class OnCollisionEscalones : MonoBehaviour
         GameManager = GameObject.FindGameObjectWithTag("GameController");
         keepTrack = GameManager.GetComponent<keepTrack>();
         player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-
-    void Update()
-    {
-
+        baseN2 = GameObject.FindGameObjectWithTag("baseN2");
+        
     }
 
     IEnumerator cambiocolor()
@@ -49,23 +48,37 @@ public class OnCollisionEscalones : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-
         if (collision.gameObject.tag == "Player" && tocado == false)
         {
+            score += 1;
+            Debug.Log(score);
 
-            //       // Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
-            Escalon.gameObject.GetComponent<Renderer>().material = Verde;
-            StartCoroutine("cambiocolor");
-            tocado = true;
+            if (score < 7)
+            {
+                tocado = true;
+                Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
+                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                StartCoroutine("cambiocolor");
+            }
 
+            if (score == 7)
+            {
+                tocado = true;
+                Vector3 posN2 = new Vector3(-75, 1.5f, 20);
+                Instantiate(gameObject, posN2, Quaternion.identity);
+                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                StartCoroutine("cambiocolor");
+            }
+
+            if (score >= 8)
+            {
+                tocado = true;
+                Instantiate(gameObject, new Vector3(posX, transform.position.y, transform.position.z + 8), Quaternion.identity);
+                Escalon.gameObject.GetComponent<Renderer>().material = Verde;
+                StartCoroutine("cambiocolor");
+            }
+            
         }
-
-        //    keepTrack.Score++;
-        //    Debug.Log(keepTrack.Score);
-        //    Debug.Log("AwA");
-        //    Debug.Log(tocado);
-
-        //} 
 
     }
 }

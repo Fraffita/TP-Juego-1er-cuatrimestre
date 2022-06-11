@@ -9,7 +9,7 @@ public class keepTrack : MonoBehaviour
 
     void Start()
     {
-        Score = 0;
+      //  Score = 0;
     }
 
 }

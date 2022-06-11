@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerPrefabs : MonoBehaviour
 {
     
-    bool tocado;
+  bool tocado;
     float posZ;
     public GameObject prefab;
 
     void Start()
     {
-        tocado = false;
+     
         posZ = Random.Range(-6.5f, 5.5f);
     }
 
@@ -26,10 +26,10 @@ public class PlayerPrefabs : MonoBehaviour
         if (collision.gameObject.tag == "escalon")
         {
 
-           Debug.Log("1");
+          // Debug.Log("1");
            // Instantiate(prefab, new Vector3(prefab.transform.position.x - 8, prefab.transform.position.y, posZ), Quaternion.identity);
            // prefab.GetComponent<Renderer>().material = Verde;
-           tocado = true;
+          // tocado = true;
 
 
         }

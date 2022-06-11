@@ -25,7 +25,6 @@ public class PlayerActions : MonoBehaviour
         if (collision.gameObject.tag == "baseFinal" && tocado == false)
         {
             PanelFinal.SetActive(true);
-            PanelFinal.transform.position = new Vector3(41, 15, 85);
             tocado = true;
         }
 

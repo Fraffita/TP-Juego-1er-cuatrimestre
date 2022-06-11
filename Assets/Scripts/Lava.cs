@@ -12,6 +12,7 @@ public class Lava : MonoBehaviour
     public float RangoCreacion = 14f;
 
     float posZ;
+    float posX;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -42,6 +43,9 @@ public class Lava : MonoBehaviour
             posZ = Random.Range(-6.5f, 5.5f);
             Vector3 SpawnPosition = new Vector3(-9.7f, 1.7f, posZ);
              GameObject Escalon = Instantiate(Escalones, SpawnPosition, Quaternion.identity);
+            posX = Random.Range(-81.5f, -69.5f);
+            Vector3 SpawnPositionN2 = new Vector3(posX, 1.5f, 20);
+            GameObject EscalonN2 = Instantiate(Escalones, SpawnPositionN2, Quaternion.identity);
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - escalon
   - baseFinal
+  - baseN2
   layers:
   - Default
   - TransparentFX
