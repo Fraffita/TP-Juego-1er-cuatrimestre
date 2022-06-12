@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnCollisionEscalones : MonoBehaviour
+public class OnCollsionEscalonN2 : MonoBehaviour
 {
     public GameObject Escalon;
     public Material Verde;
     public Material Rojo;
     GameObject GameManager;
-   //public GameObject spawnN2;
-   //public GameObject spawnN3;
 
     GameObject player;
     GameObject baseN2;
-    GameObject escalonN2;
     public GameObject SigNivel;
 
-    // GameObject ultPlataforma1;
-  //  GameObject ultPlataforma2;
-
     bool tocado;
-    float posZ;
+    
     float posX;
-    float posZ2;
+    float posZ;
+    
     public int score;
 
     Lava ScriptLava;
@@ -30,13 +25,15 @@ public class OnCollisionEscalones : MonoBehaviour
 
     void Start()
     {
-        posZ = Random.Range(-6.5f, 5.5f);
+        
         posX = Random.Range(-81.5f, -69.5f);
+        posZ = Random.Range(88.6f, 75.5f);
         GameManager = GameObject.FindGameObjectWithTag("GameController");
         ScriptLava = GameManager.GetComponent<Lava>();
+        
         player = GameObject.FindGameObjectWithTag("Player");
         baseN2 = GameObject.FindGameObjectWithTag("baseN2");
-        
+
     }
 
     IEnumerator cambiocolor()
@@ -57,18 +54,20 @@ public class OnCollisionEscalones : MonoBehaviour
 
             if (score < 7)
             {
-                Instantiate(gameObject, new Vector3(transform.position.x - 8, transform.position.y, posZ), Quaternion.identity);
+                Instantiate(gameObject, new Vector3(posX, transform.position.y, transform.position.z + 8), Quaternion.identity);
+                
             }
 
             if (score == 7)
             {
-                Vector3 posN2 = new Vector3(posX, 1.5f, 18.5f);
+                Vector3 posN2 = new Vector3(-58, 1, posZ);
                 Instantiate(SigNivel, posN2, Quaternion.identity);
             }
 
             Escalon.gameObject.GetComponent<Renderer>().material = Verde;
             StartCoroutine("cambiocolor");
 
+            
         }
 
     }
